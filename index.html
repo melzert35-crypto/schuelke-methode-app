@@ -1,507 +1,292 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Schülke Methode – Adventskalender</title>
-<style>
-  :root {
-    --turquoise-bg: linear-gradient(135deg, #a2e8f0 0%, #baf5ee 50%, #d8faf7 100%);
-    --magenta: #d91a72;
-    --magenta-light: #fce6f1;
-    --ink: #243247;
-    --muted: #5a6e85;
-    --paper: #ffffff;
-    --line: #c3ebf0;
-  }
-  
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, sans-serif;
-    background: var(--turquoise-bg);
-    color: var(--ink);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schülke Methode</title>
+    <style>
+        /* 1. Schriftarten (TTF) einbinden */
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('assets/fonts/Montserrat-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
 
-  /* Header & Original Branding */
-  header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('assets/fonts/Montserrat-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
 
-  .brand-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
+        /* 2. Allgemeine Stile & Hintergrund */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  .brand-logo {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--magenta);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    color: var(--magenta);
-    font-family: Georgia, serif;
-    font-size: 18px;
-    font-weight: bold;
-  }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            background: linear-gradient(180deg, #a8f0ed 0%, #d8fbf8 50%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333333;
+        }
 
-  .brand-text-wrap {
-    display: flex;
-    flex-direction: column;
-  }
+        /* 3. Header & Logo */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: transparent;
+        }
 
-  .brand-title {
-    font-family: Georgia, serif;
-    font-size: 16px;
-    letter-spacing: 0.15em;
-    color: var(--magenta);
-    text-transform: uppercase;
-    font-weight: bold;
-    line-height: 1.1;
-  }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-  .brand-subtitle {
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
 
-  /* Hamburger Menü Button */
-  .menu-btn {
-    background: var(--magenta-light);
-    border: none;
-    color: var(--magenta);
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    font-size: 22px;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-  }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
 
-  /* Dropdown-Menü */
-  .dropdown-menu {
-    position: absolute;
-    top: 76px;
-    right: 24px;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    display: none;
-    flex-direction: column;
-    min-width: 200px;
-    overflow: hidden;
-    z-index: 200;
-  }
-  .dropdown-menu.show { display: flex; }
-  .dropdown-menu button, .dropdown-menu a {
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 14px 20px;
-    font: inherit;
-    font-weight: 600;
-    color: var(--ink);
-    cursor: pointer;
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-  }
-  .dropdown-menu button:hover, .dropdown-menu a:hover {
-    background: var(--magenta-light);
-    color: var(--magenta);
-  }
+        .brand-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: #d81b60; /* Hauptfarbe */
+            text-transform: uppercase;
+        }
 
-  /* Main Content */
-  main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-    flex: 1;
-    width: 100%;
-  }
+        .brand-subtitle {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #888888;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
 
-  .page { display: none; }
-  .page.active { display: block; }
+        /* Hamburger Button */
+        .hamburger-btn {
+            background: #fce4ec;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
 
-  /* Hero Section */
-  .hero {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 30px;
-    border: 1px solid var(--line);
-    box-shadow: 0 10px 30px rgba(42, 90, 104, 0.05);
-    margin-bottom: 30px;
-  }
+        .hamburger-btn span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: #d81b60;
+            border-radius: 2px;
+        }
 
-  .hero h1 {
-    font-family: Georgia, serif;
-    color: var(--magenta);
-    font-size: clamp(28px, 4.5vw, 42px);
-    line-height: 1.25;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    margin-bottom: 25px;
-    font-weight: 400;
-  }
+        /* 4. Hauptinhalt & Card */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-  .btn {
-    background: var(--magenta);
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(217, 26, 114, 0.25);
-    transition: transform 0.2s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
-  }
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px 25px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
 
-  .btn:hover { transform: translateY(-2px); }
-  
-  .btn.secondary {
-    background: var(--paper);
-    color: var(--magenta);
-    border: 1px solid var(--line);
-  }
+        .hero-title {
+            font-size: 1.35rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: #d81b60;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
 
-  /* Adventskalender Grid */
-  .section-title {
-    font-family: Georgia, serif;
-    color: var(--magenta);
-    font-size: 32px;
-    margin-bottom: 8px;
-  }
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
 
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 14px;
-    margin-top: 24px;
-  }
+        .btn-primary {
+            background-color: #d81b60;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
 
-  @media (max-width: 768px) {
-    .calendar-grid { grid-template-columns: repeat(3, 1fr); }
-  }
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #d81b60;
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
 
-  .door {
-    aspect-ratio: 1;
-    background: var(--paper);
-    border: 2px solid var(--line);
-    border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-  }
+        .btn-primary:active, .btn-secondary:active {
+            transform: scale(0.98);
+        }
 
-  .door:hover {
-    transform: translateY(-3px);
-    border-color: var(--magenta);
-    box-shadow: 0 6px 16px rgba(217, 26, 114, 0.15);
-  }
+        /* 5. Hamburger Menü Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
 
-  .door .num {
-    font-family: Georgia, serif;
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--magenta);
-  }
+        .menu-overlay.active {
+            right: 0;
+        }
 
-  .door .label {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
+        .close-menu {
+            align-self: flex-end;
+            font-size: 1.5rem;
+            border: none;
+            background: none;
+            color: #888;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
 
-  /* Admin Bereich */
-  .card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 28px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-  }
+        .menu-items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-  .form-group { margin-bottom: 16px; }
-  label { display: block; font-weight: bold; color: var(--magenta); font-size: 13px; margin-bottom: 6px; }
-  input, textarea, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    font: inherit;
-    background: #f9fcfd;
-  }
-  textarea { min-height: 130px; resize: vertical; }
+        .menu-items a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-  /* Modal Popup */
-  .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(20, 40, 50, 0.5);
-    backdrop-filter: blur(4px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 1000;
-  }
-  .modal-backdrop.show { display: flex; }
+        .admin-link {
+            color: #d81b60 !important;
+            font-weight: 500;
+            display: none; /* Standardmäßig versteckt */
+        }
 
-  .modal {
-    background: var(--paper);
-    border-radius: 24px;
-    padding: 32px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    border: 1px solid var(--line);
-    position: relative;
-  }
-
-  .modal h2 { font-family: Georgia, serif; color: var(--magenta); margin-top: 10px; font-size: 26px; }
-  
-  .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--magenta-light);
-    color: var(--magenta);
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  footer {
-    text-align: center;
-    padding: 24px;
-    color: var(--muted);
-    font-size: 13px;
-    border-top: 1px solid var(--line);
-    background: rgba(255,255,255,0.4);
-  }
-
-  footer a { color: var(--magenta); text-decoration: none; font-weight: 600; }
-</style>
+        .admin-login-btn {
+            margin-top: auto;
+            color: #aaa;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            text-align: left;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <a href="https://schuelke-methode.de/" target="_blank" class="brand-container">
-    <div class="brand-logo">S</div>
-    <div class="brand-text-wrap">
-      <span class="brand-title">Schülke Methode</span>
-      <span class="brand-subtitle">Gesundheit · Bewusstsein</span>
-    </div>
-  </a>
+    <!-- Header mit Logo und Hamburger-Menü -->
+    <header>
+        <div class="logo-container">
+            <img src="assets/images/Schuelke-Logo_weiss.png" alt="Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-title">Schülke Methode</span>
+                <span class="brand-subtitle">Gesundheit · Bewusstsein</span>
+            </div>
+        </div>
 
-  <!-- Hamburger Menü Button -->
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menü">☰</button>
+        <button class="hamburger-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-  <!-- Dropdown Menü -->
-  <div class="dropdown-menu" id="dropdownMenu">
-    <button onclick="switchPage('home')">Startseite</button>
-    <button onclick="switchPage('calendar')">Adventskalender</button>
-    <a href="https://schuelke-methode.de/" target="_blank">Zur Homepage ↗</a>
-    <button onclick="switchPage('admin')" style="color: var(--muted); font-size: 12px;">⚙ Inhalte pflegen</button>
-  </div>
-</header>
+    <!-- Hauptbereich / Card -->
+    <main>
+        <div class="card">
+            <h1 class="hero-title">
+                Gesundheit ist Farbe im Leben.<br>
+                Du bestimmst, wie bunt es wird!
+            </h1>
 
-<main>
-  <!-- Startseite -->
-  <section id="page-home" class="page active">
-    <div class="hero">
-      <h1>GESUNDHEIT IST FARBE IM LEBEN.<br>DU BESTIMMST, WIE BUNT ES WIRD!</h1>
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 25px;">
-        <button class="btn" onclick="switchPage('calendar')">✦ Zum Adventskalender</button>
-        <a href="https://schuelke-methode.de/" target="_blank" class="btn secondary">Zur Homepage ↗</a>
-      </div>
-    </div>
-  </section>
+            <div class="btn-container">
+                <a href="#adventskalender" class="btn-primary">
+                    ✦ Zum Adventskalender
+                </a>
+                <a href="#homepage" class="btn-secondary">
+                    Zur Homepage ↗
+                </a>
+            </div>
+        </div>
+    </main>
 
-  <!-- Adventskalender -->
-  <section id="page-calendar" class="page">
-    <h2 class="section-title">Der Adventskalender</h2>
-    <p style="color: var(--muted); margin-bottom: 10px;">24 Türchen mit täglichen Übungen und Impulsen. Klicke auf ein Türchen:</p>
-    <div class="calendar-grid" id="calendarGrid"></div>
-  </section>
-
-  <!-- Admin / Inhalte pflegen -->
-  <section id="page-admin" class="page">
-    <h2 class="section-title">Inhalte pflegen</h2>
-    <p style="color: var(--muted); margin-bottom: 20px;">Hier kannst du die Inhalte der 24 Türchen bearbeiten und abspeichern.</p>
-    
-    <div class="card">
-      <div class="form-group">
-        <label for="selectDay">Türchen auswählen:</label>
-        <select id="selectDay" onchange="loadEditorData()"></select>
-      </div>
-      <div class="form-group">
-        <label for="inputTitle">Titel der Übung:</label>
-        <input type="text" id="inputTitle" placeholder="z. B. Ein Moment der Ruhe">
-      </div>
-      <div class="form-group">
-        <label for="inputCategory">Kategorie:</label>
-        <input type="text" id="inputCategory" placeholder="z. B. Körper, Geist, Entspannung">
-      </div>
-      <div class="form-group">
-        <label for="inputText">Übung / Text / Anleitung:</label>
-        <textarea id="inputText" placeholder="Hier den Text für das Türchen eingeben..."></textarea>
-      </div>
-      <button class="btn" onclick="saveData()">Änderungen speichern</button>
-    </div>
-
-    <div class="card">
-      <h3>Datensicherung & Übertragung</h3>
-      <p style="color: var(--muted); font-size: 14px; margin-bottom: 15px;">Exportiere die bearbeiteten Inhalte als Datei, um sie auf dem USB-Stick zu sichern.</p>
-      <button class="btn secondary" onclick="exportJSON()">↓ Inhalte exportieren (.json)</button>
-    </div>
-  </section>
-</main>
-
-<!-- Modal für Türchen-Inhalt -->
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <button class="close-btn" onclick="closeModal()">×</button>
-    <small id="modalCategory" style="color: var(--magenta); font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;"></small>
-    <h2 id="modalTitle">Titel</h2>
-    <p id="modalText" style="line-height: 1.6; color: var(--ink); margin: 20px 0; white-space: pre-line;"></p>
-    <button class="btn secondary" onclick="closeModal()">Schließen</button>
-  </div>
-</div>
-
-<footer>
-  Schülke Methode · Offizielle Homepage: <a href="https://schuelke-methode.de/" target="_blank">schuelke-methode.de</a>
-</footer>
-
-<script>
-  let contents = JSON.parse(localStorage.getItem('schuelkeAppData')) || Array.from({length: 24}, (_, i) => ({
-    day: i + 1,
-    title: `Türchen ${i + 1}`,
-    category: 'Impuls',
-    text: 'Hier entsteht der persönliche Inhalt für diesen Tag.'
-  }));
-
-  function toggleMenu() {
-    document.getElementById('dropdownMenu').classList.toggle('show');
-  }
-
-  function switchPage(pageId) {
-    document.getElementById('dropdownMenu').classList.remove('show');
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    
-    const targetPage = document.getElementById('page-' + pageId);
-    if(targetPage) targetPage.classList.add('active');
-    
-    if(pageId === 'calendar') renderCalendar();
-    if(pageId === 'admin') initAdminDropdown();
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
-
-  function renderCalendar() {
-    const grid = document.getElementById('calendarGrid');
-    if(!grid) return;
-    grid.innerHTML = '';
-    contents.forEach((item, index) => {
-      const door = document.createElement('div');
-      door.className = 'door';
-      door.innerHTML = `<span class="num">${index + 1}</span><span class="label">Öffnen</span>`;
-      door.onclick = () => openDoor(index);
-      grid.appendChild(door);
-    });
-  }
-
-  function openDoor(index) {
-    const item = contents[index];
-    document.getElementById('modalCategory').textContent = item.category;
-    document.getElementById('modalTitle').textContent = item.title;
-    document.getElementById('modalText').textContent = item.text;
-    document.getElementById('modalBackdrop').classList.add('show');
-  }
-
-  function closeModal() {
-    document.getElementById('modalBackdrop').classList.remove('show');
-  }
-
-  function initAdminDropdown() {
-    const select = document.getElementById('selectDay');
-    if(!select) return;
-    select.innerHTML = '';
-    contents.forEach((item, index) => {
-      const opt = document.createElement('option');
-      opt.value = index;
-      opt.textContent = `Türchen ${index + 1}: ${item.title}`;
-      select.appendChild(opt);
-    });
-    loadEditorData();
-  }
-
-  function loadEditorData() {
-    const select = document.getElementById('selectDay');
-    if(!select) return;
-    const index = select.value;
-    const item = contents[index];
-    if(!item) return;
-    document.getElementById('inputTitle').value = item.title;
-    document.getElementById('inputCategory').value = item.category;
-    document.getElementById('inputText').value = item.text;
-  }
-
-  function saveData() {
-    const select = document.getElementById('selectDay');
-    if(!select) return;
-    const index = select.value;
-    contents[index].title = document.getElementById('inputTitle').value;
-    contents[index].category = document.getElementById('inputCategory').value;
-    contents[index].text = document.getElementById('inputText').value;
-    
-    localStorage.setItem('schuelkeAppData', JSON.stringify(contents));
-    alert('Änderungen erfolgreich gespeichert!');
-    initAdminDropdown();
-  }
-
-  function exportJSON() {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(contents, null, 2));
-    const dlAnchor = document.createElement('a');
-    dlAnchor.setAttribute("href", dataStr);
-    dlAnchor.setAttribute("download", "schuelke_methode_inhalte.json");
-    document.body.appendChild(dlAnchor);
-    dlAnchor.click();
-    dlAnchor.remove();
-  }
-
-  renderCalendar();
-</script>
-
-</body>
-</html>
+    <!-- Hamburger Menü (Sidebar) -->
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="close-menu" onclick="toggleMenu()">✕</button>
+        <ul class="menu-items">
+            <li><a href="#homepage">Zur Homepage</a></li>
+            <li><a href="#adv
+                  

@@ -1,50 +1,458 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#b8f0f5"><title>Schülke Methode – Adventskalender</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schülke Methode – Gesundheitsapp & Adventskalender</title>
 <style>
-:root{color-scheme:light;--bg:linear-gradient(135deg, #a4e9ef 0%, #b8f5f0 50%, #dcf8f5 100%);--paper:#ffffff;--ink:#243247;--muted:#5a6e85;--line:#c7ebf0;--primary:#d91a72;--primary-light:#fce6f1;--shadow:0 14px 40px rgba(42, 90, 104, 0.12)}
-*{box-sizing:border-box}body{margin:0;background:#b8f0f5;color:var(--ink);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;background:var(--bg)}.topbar{height:76px;padding:0 clamp(16px,5vw,64px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(255, 255, 255, 0.9);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.05em;color:var(--primary);text-transform:uppercase;font-size:13px}.mark{width:42px;height:42px;border-radius:50%;background:var(--primary);display:grid;place-items:center;color:#ffffff;font-size:22px}.brand small{display:block;font-weight:400;font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}.nav{display:flex;gap:6px}.nav button,.menu-btn{border:0;background:transparent;color:var(--ink);padding:10px 14px;border-radius:999px;font-weight:500}.nav button.active,.nav button:hover{background:var(--primary-light);color:var(--primary)}.menu-btn{display:none;font-size:22px}.main{max-width:1120px;margin:auto;padding:32px 24px 60px}.hero{position:relative;overflow:hidden;min-height:360px;border-radius:28px;background:linear-gradient(135deg, rgba(164, 233, 239, 0.9) 0%, rgba(184, 245, 240, 0.8) 100%);border:1px solid #ffffff;color:#fff;padding:clamp(32px,6vw,64px);display:flex;align-items:center;box-shadow:var(--shadow)}.hero-copy{max-width:650px;position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--primary);margin-bottom:8px}.hero h1{font-family:Georgia,serif;font-size:clamp(32px,5vw,54px);line-height:1.1;letter-spacing:-.03em;margin:12px 0;color:var(--primary);text-transform:uppercase;font-weight:400}.hero p{font-size:18px;max-width:520px;color:var(--primary);font-weight:500;line-height:1.4}.btn{border:0;border-radius:999px;background:var(--primary);color:#ffffff;font-weight:700;padding:14px 22px;display:inline-flex;align-items:center;gap:9px;margin-top:16px;box-shadow:0 4px 14px rgba(217, 26, 114, 0.3)}.btn.secondary{background:var(--paper);color:var(--primary);border:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:40px 0 20px}.section-head h2{font-family:Georgia,serif;font-size:30px;line-height:1.1;margin:0;color:var(--primary)}.section-head p{color:var(--muted);margin:6px 0 0}.text-link{background:none;border:0;color:var(--primary);font-weight:700;padding:8px}.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.pillar{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;min-height:130px;box-shadow:0 4px 12px rgba(0,0,0,0.02)}.pillar .emoji{font-size:26px}.pillar h3{margin:10px 0 4px;font-size:16px;color:var(--primary)}.pillar p{margin:0;color:var(--muted);font-size:13px}.feature-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.feature{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 4px 12px rgba(0,0,0,0.02)}.feature h3{font-family:Georgia,serif;font-size:24px;margin:12px 0 7px;color:var(--primary)}.feature p{color:var(--muted);margin:0}.feature .iconbox{width:48px;height:48px;border-radius:16px;background:var(--primary-light);display:grid;place-items:center;font-size:22px;color:var(--primary)}.calendar-intro{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:24px}.calendar-intro h2{font-family:Georgia,serif;font-size:26px;margin:0 0 4px;color:var(--primary)}.calendar-intro p{margin:0;color:var(--muted)}.calendar-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.door{aspect-ratio:1/1.08;position:relative;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:14px;text-align:left;overflow:hidden;transition:transform .18s,border-color .18s,box-shadow .18s}.door:hover{transform:translateY(-3px);border-color:var(--primary);box-shadow:0 6px 16px rgba(217, 26, 114, 0.15)}.door .num{font-family:Georgia,serif;font-size:28px;color:var(--primary)}.door .door-icon{font-size:20px;align-self:flex-end;color:var(--primary)}.door .door-label{font-size:11px;color:var(--muted)}.door.opened{background:var(--primary-light)}.note{font-size:13px;color:var(--muted);margin-top:18px}.page-title{font-family:Georgia,serif;font-size:clamp(32px,5vw,46px);color:var(--primary);margin:8px 0}.lead{color:var(--muted);max-width:700px}.content-card{margin-top:24px;padding:26px;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:0 4px 12px rgba(0,0,0,0.02)}.content-card h3{font-family:Georgia,serif;font-size:24px;margin:0 0 8px;color:var(--primary)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:13px;color:var(--primary)}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:12px;background:#f9fcfd;color:var(--ink);padding:12px}.field textarea{min-height:110px;resize:vertical}.admin-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.admin-item{padding:14px;border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f9fcfd}.admin-item strong{display:block;color:var(--primary)}.admin-item small{color:var(--muted)}.small-btn{border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--primary);padding:8px 12px;font-size:13px;font-weight:600}.footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:12px;background:rgba(255,255,255,0.5)}.modal-backdrop{position:fixed;inset:0;background:rgba(20,40,50,0.5);backdrop-filter:blur(4px);z-index:20;display:none;align-items:center;justify-content:center;padding:18px}.modal-backdrop.show{display:flex}.modal{background:var(--paper);color:var(--ink);border-radius:26px;padding:28px;max-width:520px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:1px solid var(--line)}.modal-top{display:flex;justify-content:space-between;gap:15px}.modal h2{font-family:Georgia,serif;font-size:30px;line-height:1.1;margin:12px 0;color:var(--primary)}.close{border:0;background:var(--primary-light);color:var(--primary);width:38px;height:38px;border-radius:50%;font-size:22px;flex-shrink:0}.tag{display:inline-block;border-radius:999px;padding:5px 12px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:999px;z-index:40;box-shadow:var(--shadow);display:none;font-weight:500}.toast.show{display:block}.admin-warning{background:#fdf2f7;border:1px solid #f7d5e6;padding:14px 16px;border-radius:14px;font-size:13px;margin-top:16px;color:#a31254}.footer a{color:var(--primary)}
-@media(max-width:760px){.topbar{height:64px;padding:0 16px}.nav{display:none;position:absolute;top:63px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);padding:12px;flex-direction:column;box-shadow:0 10px 20px rgba(0,0,0,0.05)}.nav.show{display:flex}.nav button{text-align:left}.menu-btn{display:block}.main{padding:18px 14px 42px}.hero{min-height:310px;border-radius:23px;padding:26px 20px}.pillars{grid-template-columns:repeat(2,1fr);gap:10px}.pillar{padding:16px;min-height:125px}.feature-grid{grid-template-columns:1fr}.calendar-grid{grid-template-columns:repeat(4,1fr);gap:8px}.door{padding:10px;border-radius:14px}.door .num{font-size:24px}.calendar-intro{align-items:flex-start;flex-direction:column}.section-head{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.admin-list{grid-template-columns:1fr}.section-head h2{font-size:26px}}
-@media(min-width:761px){.main{padding-top:35px}}
-</style></head>
-<body><div class="app">
-<header class="topbar"><div class="brand"><div class="mark">S</div><div>Schülke Methode<small>Gesundheit · Körper · Bewusstsein</small></div></div><nav class="nav" id="nav"><button class="active" data-page="home">Startseite</button><button data-page="calendar">Adventskalender</button><button data-page="impulse">Impulse & Übungen</button><button data-page="about">Die Methode</button><button data-page="admin">Inhalte pflegen</button></nav><button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">☰</button></header>
-<main class="main">
-<section id="page-home" class="page">
-<div class="hero"><div class="hero-copy"><div class="eyebrow">Ein Moment nur für dich</div><h1>Gesundheit ist Farbe im Leben.</h1><p>Du bestimmst, wie bunt es wird. Entdecke kleine Impulse für Körper, Geist und Wohlbefinden – in deinem Tempo.</p><button class="btn" data-goto="calendar">✦ Adventskalender entdecken <span>→</span></button></div></div>
-<div class="section-head"><div><h2>Vier Ebenen. Ein ganzes Ich.</h2><p>Die Schülke Methode lädt dazu ein, dich ganzheitlich wahrzunehmen.</p></div></div>
-<div class="pillars"><article class="pillar"><div class="emoji">☼</div><h3>Mentale Ebene</h3><p>Gedanken, Klarheit und neue Perspektiven.</p></article><article class="pillar"><div class="emoji">♡</div><h3>Emotionale Ebene</h3><p>Gefühle wahrnehmen und Raum geben.</p></article><article class="pillar"><div class="emoji">❋</div><h3>Physische Ebene</h3><p>Bewegung, Körpergefühl und Entspannung.</p></article><article class="pillar"><div class="emoji">✧</div><h3>Spirituelle Ebene</h3><p>Verbundenheit, Sinn und innere Ruhe.</p></article></div>
-<div class="section-head"><div><h2>Was tut dir heute gut?</h2><p>Das Fundament für deine persönliche Gesundheitsbegleitung.</p></div></div>
-<div class="feature-grid"><article class="feature"><div class="iconbox">🎁</div><h3>24 kleine Türchen</h3><p>Eine tägliche Pause mit einer Übung, einem Gedanken oder einem freundlichen Impuls für die Adventszeit.</p><button class="btn" data-goto="calendar">Zum Adventskalender →</button></article><article class="feature"><div class="iconbox">🌿</div><h3>Impulse für den Alltag</h3><p>Hier finden die Inhalte, Kurse und ausgewählten Übungen ihren strukturierten Platz.</p><button class="btn secondary" data-goto="impulse">Impulse ansehen →</button></article></div>
-</section>
-<section id="page-calendar" class="page hidden"><div class="eyebrow">Dein täglicher Wohlfühlmoment</div><h1 class="page-title">Der Adventskalender</h1><p class="lead">24 Türchen, 24 Einladungen, kurz innezuhalten. Klicke auf ein Türchen, um den Inhalt zu öffnen.</p><div class="calendar-intro"><div><h2>Mach es dir leicht.</h2><p>Du musst nichts leisten. Nimm dir einfach einen Moment für dich.</p></div><span class="tag">24 kleine Impulse</span></div><div class="calendar-grid" id="calendarGrid"></div><p class="note">Hinweis: Alle Türchen lassen sich frei öffnen und erkunden.</p></section>
-<section id="page-impulse" class="page hidden"><div class="eyebrow">Kleine Schritte, die gut tun</div><h1 class="page-title">Impulse & Übungen</h1><p class="lead">Eine Sammlung für Übungen, Audios, Videos und kurze Texte der Schülke Methode.</p><div class="feature-grid" style="margin-top:24px"><article class="feature"><div class="iconbox">🌬️</div><h3>Ein bewusster Atemzug</h3><p>Nimm wahr, wie dein Atem kommt und geht. Du brauchst nichts zu verändern. Ein paar ruhige Atemzüge markieren eine kleine Pause im Alltag.</p><span class="tag" style="margin-top:15px">Beispiel · 1 Minute</span></article><article class="feature"><div class="iconbox">🪴</div><h3>Im Körper ankommen</h3><p>Spüre für einen Moment den Kontakt deiner Füße zum Boden. Schau dich um und nimm drei Dinge wahr, die dir angenehm auffallen.</p><span class="tag" style="margin-top:15px">Beispiel · 2 Minuten</span></article></div><div class="content-card"><h3>Eure Inhalte einpflegen</h3><p class="lead">Alle Themen und Kategorien können bequem über den Verwaltungsbereich angepasst und auf diesem Gerät gespeichert werden.</p><button class="btn" data-goto="admin">Inhaltsverwaltung öffnen →</button></div></section>
-<section id="page-about" class="page hidden"><div class="eyebrow">Die Schülke Methode</div><h1 class="page-title">Ganzheitlich hinschauen.</h1><p class="lead">Die Schülke Methode verbindet Körper, Geist und Bewusstsein zu einem runden Ganzen.</p><div class="content-card"><h3>Vier Ebenen in Verbindung</h3><p>Mentale, emotionale, physische und spirituelle Aspekte bilden die Basis für mehr Wohlbefinden und innere Klarheit im Alltag.</p><button class="btn secondary" onclick="window.open('https://schuelke-methode.de/','_blank','noopener')">Zur Homepage schuelke-methode.de ↗</button></div></div></section>
-<section id="page-admin" class="page hidden"><div class="eyebrow">Inhaltsverwaltung</div><h1 class="page-title">Inhalte pflegen</h1><p class="lead">Hier können die Titel und Texte der 24 Türchen bearbeitet sowie als JSON-Datei gesichert oder importiert werden.</p><div class="content-card"><h3>Türchen bearbeiten</h3><div class="form-grid"><div class="field"><label for="editDay">Türchen</label><select id="editDay"></select></div><div class="field"><label for="editCategory">Kategorie</label><select id="editCategory"><option>Körper</option><option>Geist</option><option>Emotionen</option><option>Entspannung</option><option>Inspiration</option></select></div><div class="field full"><label for="editTitle">Titel</label><input id="editTitle" maxlength="100" placeholder="Titel der Übung"></div><div class="field full"><label for="editText">Inhalt / Anleitung</label><textarea id="editText" placeholder="Hier kommt der Text der Übung hinein …"></textarea></div><div class="field full"><label for="editMedia">Link zu Audio oder Video (optional)</label><input id="editMedia" type="url" placeholder="https://…"></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn" id="saveContent" type="button">Änderungen speichern</button><button class="btn secondary" id="previewContent" type="button">Türchen-Vorschau</button></div><p class="note">Änderungen werden sicher lokal in diesem Browser gespeichert.</p></div><div class="content-card"><h3>Datensicherung & Übertragung</h3><p class="lead">Exportiere die bearbeiteten Inhalte als Datei, um sie auf einem anderen Gerät zu nutzen oder zu sichern.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn secondary" id="exportJson" type="button">↓ Inhalte exportieren</button><label class="btn secondary" for="importJson" style="margin-top:14px;cursor:pointer">↑ JSON importieren</label><input class="hidden" id="importJson" type="file" accept="application/json,.json"></div><div class="admin-warning"><strong>Tipp:</strong> Über den Export/Import könnt ihr die fertigen Texte ganz leicht zwischen verschiedenen PCs austauschen.</div></div><div class="content-card"><h3>Übersicht der 24 Türchen</h3><div id="adminList" class="admin-list"></div></div></section>
-</main><footer class="footer">Schülke Methode · <a href="https://schuelke-methode.de/" target="_blank" rel="noopener">schuelke-methode.de</a></footer>
+  :root {
+    --turquoise-bg: linear-gradient(135deg, #a2e8f0 0%, #baf5ee 50%, #d8faf7 100%);
+    --magenta: #d91a72;
+    --magenta-light: #fce6f1;
+    --ink: #243247;
+    --muted: #5a6e85;
+    --paper: #ffffff;
+    --line: #c3ebf0;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--turquoise-bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header & Branding */
+  header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .brand-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    border: 2px solid var(--magenta);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--magenta);
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .brand-text {
+    font-weight: 700;
+    color: var(--magenta);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 13px;
+  }
+
+  .brand-text small {
+    display: block;
+    font-weight: 400;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  nav button.active, nav button:hover {
+    background: var(--magenta-light);
+    color: var(--magenta);
+  }
+
+  /* Main Layout */
+  main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex: 1;
+    width: 100%;
+  }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* Hero Section im Look der Homepage */
+  .hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(42, 90, 104, 0.05);
+    margin-bottom: 30px;
+  }
+
+  .hero h1 {
+    font-family: Georgia, serif;
+    color: var(--magenta);
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 15px;
+    font-weight: 400;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 600px;
+    margin: 0 auto 25px;
+  }
+
+  .btn {
+    background: var(--magenta);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 26, 114, 0.25);
+    transition: transform 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+  
+  .btn.secondary {
+    background: var(--paper);
+    color: var(--magenta);
+    border: 1px solid var(--line);
+  }
+
+  /* Adventskalender Grid */
+  .section-title {
+    font-family: Georgia, serif;
+    color: var(--magenta);
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .calendar-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .door {
+    aspect-ratio: 1;
+    background: var(--paper);
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+
+  .door:hover {
+    transform: translateY(-3px);
+    border-color: var(--magenta);
+    box-shadow: 0 6px 16px rgba(217, 26, 114, 0.15);
+  }
+
+  .door .num {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--magenta);
+  }
+
+  .door .label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Admin Cards */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  }
+
+  .form-group { margin-bottom: 16px; }
+  label { display: block; font-weight: bold; color: var(--magenta); font-size: 13px; margin-bottom: 6px; }
+  input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font: inherit;
+    background: #f9fcfd;
+  }
+  textarea { min-height: 120px; resize: vertical; }
+
+  /* Modal Popup */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 40, 50, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+  }
+  .modal-backdrop.show { display: flex; }
+
+  .modal {
+    background: var(--paper);
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: get-shadow;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .modal h2 { font-family: Georgia, serif; color: var(--magenta); margin-top: 10px; }
+  
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--magenta-light);
+    color: var(--magenta);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+    background: rgba(255,255,255,0.4);
+  }
+
+  footer a { color: var(--magenta); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-container">
+    <div class="brand-logo">S</div>
+    <div class="brand-text">Schülke Methode<small>Gesundheit · Bewusstsein</small></div>
+  </div>
+  <nav>
+    <button onclick="switchPage('home')" id="nav-home" class="active">Startseite</button>
+    <button onclick="switchPage('calendar')" id="nav-calendar">Adventskalender</button>
+    <button onclick="switchPage('admin')" id="nav-admin">Inhalte pflegen</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Startseite -->
+  <section id="page-home" class="page active">
+    <div class="hero">
+      <h1>Gesundheit ist Farbe im Leben.<br>Du bestimmst, wie bunt es wird!</h1>
+      <p>Willkommen zum digitalen Begleiter der Schülke Methode. Entdecke tägliche Impulse für Körper, Geist und Wohlbefinden.</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn" onclick="switchPage('calendar')">✦ Zum Adventskalender</button>
+        <a href="https://schuelke-methode.de/" target="_blank" class="btn secondary">Zur Homepage ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adventskalender -->
+  <section id="page-calendar" class="page">
+    <h2 class="section-title">Der Adventskalender</h2>
+    <p style="color: var(--muted); margin-bottom: 20px;">24 Türchen mit täglichen Übungen und Impulsen. Klicke auf ein Türchen:</p>
+    <div class="calendar-grid" id="calendarGrid"></div>
+  </section>
+
+  <!-- Inhalte pflegen / Admin -->
+  <section id="page-admin" class="page">
+    <h2 class="section-title">Inhalte pflegen</h2>
+    <p style="color: var(--muted); margin-bottom: 20px;">Hier kannst du die Inhalte der 24 Türchen bearbeiten und für deine Freundin vorbereiten.</p>
+    
+    <div class="card">
+      <div class="form-group">
+        <label for="selectDay">Türchen auswählen:</label>
+        <select id="selectDay" onchange="loadEditorData()"></select>
+      </div>
+      <div class="form-group">
+        <label for="inputTitle">Titel der Übung:</label>
+        <input type="text" id="inputTitle" placeholder="z. B. Ein Moment der Ruhe">
+      </div>
+      <div class="form-group">
+        <label for="inputCategory">Kategorie:</label>
+        <input type="text" id="inputCategory" placeholder="z. B. Körper, Geist, Entspannung">
+      </div>
+      <div class="form-group">
+        <label for="inputText">Übung / Text / Anleitung:</label>
+        <textarea id="inputText" placeholder="Hier den Text für das Türchen eingeben..."></textarea>
+      </div>
+      <button class="btn" onclick="saveData()">Änderungen speichern</button>
+    </div>
+
+    <div class="card">
+      <h3>Datensicherung & Übertragung</h3>
+      <p style="color: var(--muted); font-size: 14px; margin-bottom: 15px;">Exportiere die bearbeiteten Inhalte als Datei, um sie auf dem USB-Stick zu sichern oder später einzuspielen.</p>
+      <button class="btn secondary" onclick="exportJSON()">↓ Inhalte exportieren (.json)</button>
+    </div>
+  </section>
+</main>
+
+<!-- Modal für Türchen-Inhalt -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <small id="modalCategory" style="color: var(--magenta); font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;"></small>
+    <h2 id="modalTitle">Titel</h2>
+    <p id="modalText" style="line-height: 1.6; color: var(--ink); margin: 20px 0; white-space: pre-line;"></p>
+    <button class="btn secondary" onclick="closeModal()">Schließen</button>
+  </div>
 </div>
-<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true"><div class="modal"><div class="modal-top"><span class="tag" id="modalTag">Impuls</span><button class="close" id="closeModal" aria-label="Schließen" type="button">×</button></div><div class="eyebrow" style="margin-top:22px" id="modalDay">Türchen 1</div><h2 id="modalTitleText">Ein Moment für dich</h2><p id="modalText"></p><div id="modalMedia"></div><button class="btn secondary" id="modalDone" style="margin-top:20px" type="button">Zurück zum Kalender</button></div></div><div class="toast" id="toast" role="status"></div>
+
+<footer>
+  Schülke Methode · Offizielle Homepage: <a href="https://schuelke-methode.de/" target="_blank">schuelke-methode.de</a>
+</footer>
+
 <script>
-const defaults=Array.from({length:24},(_,i)=>({day:i+1,title:['Ein Moment zum Ankommen','Atme bewusst','Dein Körper sagt Danke','Ein freundlicher Gedanke','Kleine Pause für die Sinne','Was gibt dir Kraft?','Bewegung ganz sanft','Ein Moment der Dankbarkeit','Raum für Gefühle','Eine kleine Auszeit','Spüre den Boden','Freundlichkeit für dich','Ein Lichtblick','Loslassen für einen Moment','Was brauchst du heute?','Ruhe finden','Deine Sinne entdecken','Ein Schritt nach draußen','Stärke wahrnehmen','Zeit zum Durchatmen','Ein Gedanke für morgen','Wärme schenken','Dein persönlicher Wohlfühlmoment','Ein Abschluss voller Zuversicht'][i],category:['Entspannung','Geist','Körper','Geist','Körper','Inspiration','Körper','Emotionen','Emotionen','Entspannung','Körper','Emotionen','Inspiration','Entspannung','Emotionen','Entspannung','Körper','Körper','Geist','Entspannung','Inspiration','Emotionen','Entspannung','Inspiration'][i],text:'Hier ist Platz für Frederikes persönliche Übung oder ihren Impuls. Die Texte können in der Inhaltsverwaltung angepasst werden.',media:''}));
-let contents=loadContents();function loadContents(){try{const x=localStorage.getItem('schuelkeDemoContents');if(x){const parsed=JSON.parse(x);if(Array.isArray(parsed)&&parsed.length===24)return parsed}}catch(e){}return defaults.map(x=>({...x}))}
-const $=id=>document.getElementById(id);
-function persist(){try{localStorage.setItem('schuelkeDemoContents',JSON.stringify(contents));return true}catch(e){return false}}
-function renderCalendar(){const grid=$('calendarGrid');if(!grid)return;grid.innerHTML='';contents.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.className='door '+(c.title?'opened':'future');b.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="door-label">${escapeHtml(c.category||'Impuls')}</span><span class="door-icon">${['✧','☼','❋','♡'][i%4]}</span>`;b.addEventListener('click',()=>openDoor(i+1));grid.appendChild(b)})}
-function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function openDoor(day){const c=contents[day-1];if(!c)return;$('modalTag').textContent=c.category\vert{}\vert{}'Impuls';$('modalDay').textContent='Türchen '+day+' · Dein Moment';$('modalTitleText').textContent=c.title||'Ein Moment für dich';$('modalText').textContent=c.text||'Hier ist Platz für den Inhalt dieses Türchens.';$('modalMedia').innerHTML='';if(c.media){const a=document.createElement('a');a.href=c.media;a.target='_blank';a.rel='noopener';a.className='text-link';a.textContent='Audio oder Video öffnen ↗';$('modalMedia').appendChild(a)}$('modalBackdrop').classList.add('show')}
-function showPage(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!=='page-'+name));document.querySelectorAll('.nav [data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));$('nav').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});if(name==='admin'){populateEditor();renderAdminList()}}
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));$('menuBtn').addEventListener('click',()=>$('nav').classList.toggle('show'));$('closeModal').addEventListener('click',()=>$('modalBackdrop').classList.remove('show'));$('modalDone').addEventListener('click',()=>$('modalBackdrop').classList.remove('show'));$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))$('modalBackdrop').classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')$('modalBackdrop').classList.remove('show')});
-function populateEditor(){const sel=$('editDay');if(!sel)return;const old=Number(sel.value)||1;sel.innerHTML=contents.map((c,i)=>`<option value="${i+1}">Türchen ${i+1} – ${escapeHtml(c.title)}</option>`).join('');sel.value=String(Math.min(old,24));loadEditor()}
-function loadEditor(){const sel=$('editDay');if(!sel)return;const c=contents[Number(sel.value)-1];if(!c)return;$('editTitle').value=c.title\vert{}\vert{}'';$('editCategory').value=c.category||'Entspannung';$('editText').value=c.text\vert{}\vert{}'';$('editMedia').value=c.media||''}
-if($('editDay'))$('editDay').addEventListener('change',loadEditor);
-function getEditor(){const sel=$('editDay');if(!sel)return;const day=Number(sel.value);contents[day-1]={...contents[day-1],day,title:$('editTitle').value.trim()\vert{}\vert{}'Neuer Impuls',category:$('editCategory').value,text:$('editText').value.trim(),media:$('editMedia').value.trim()}}
-if($('saveContent'))$('saveContent').addEventListener('click',()=>{getEditor();if(persist()){renderCalendar();populateEditor();renderAdminList();toast('Änderungen auf diesem Gerät gespeichert.')}else toast('Speichern nicht möglich.')});
-if($('previewContent'))$('previewContent').addEventListener('click',()=>{getEditor();openDoor(Number($('editDay').value))});
-function renderAdminList(){const list=$('adminList');if(!list)return;list.innerHTML=contents.map((c,i)=>`<div class="admin-item"><div><strong>${i+1}. ${escapeHtml(c.title)}</strong><small>${escapeHtml(c.category)}</small></div><button class="small-btn" data-edit="${i+1}" type="button">Bearbeiten</button></div>`).join('');list.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>{$('editDay').value=b.dataset.edit;loadEditor();$('editTitle').focus();window.scrollTo({top:0,behavior:'smooth'})}))}
-if($('exportJson'))$('exportJson').addEventListener('click',()=>{getEditor();persist();const blob=new Blob([JSON.stringify(contents,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='schuelke-methode-inhalte.json';a.click();URL.revokeObjectURL(url);toast('Inhaltsdatei exportiert.')});
-if($('importJson'))$('importJson').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data)||data.length!==24||data.some(x=>!x||typeof x.title!=='string'))throw Error('Format');contents=data.map((x,i)=>({...defaults[i],...x,day:i+1}));persist();renderCalendar();populateEditor();renderAdminList();toast('Inhalte erfolgreich importiert.')}catch(err){toast('Datei passt nicht zum Format.')}e.target.value=''});
-let toastTimer;function toast(msg){const t=$('toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
-renderCalendar();if($('editDay')){$('editDay').innerHTML=contents.map((c,i)=>`<option value="${i+1}">Türchen ${i+1} – ${escapeHtml(c.title)}</option>`).join('');loadEditor();renderAdminList();}
-</script></body></html>
+  // 24 Standard-Türchen initialisieren
+  let contents = JSON.parse(localStorage.getItem('schuelkeAppData')) || Array.from({length: 24}, (_, i) => ({
+    day: i + 1,
+    title: `Türchen ${i + 1}`,
+    category: 'Impuls',
+    text: 'Hier entsteht Frederikes persönlicher Inhalt für diesen Tag.'
+  }));
+
+  function switchPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    
+    document.getElementById('page-' + pageId).classList.add('active');
+    document.getElementById('nav-' + pageId).classList.add('active');
+    
+    if(pageId === 'calendar') renderCalendar();
+    if(pageId === 'admin') initAdminDropdown();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function renderCalendar() {
+    const grid = document.getElementById('calendarGrid');
+    grid.innerHTML = '';
+    contents.forEach((item, index) => {
+      const door = document.createElement('div');
+      door.className = 'door';
+      door.innerHTML = `<span class="num">${index + 1}</span><span class="label">Öffnen</span>`;
+      door.onclick = () => openDoor(index);
+      grid.appendChild(door);
+    });
+  }
+
+  function openDoor(index) {
+    const item = contents[index];
+    document.getElementById('modalCategory').textContent = item.category;
+    document.getElementById('modalTitle').textContent = item.title;
+    document.getElementById('modalText').textContent = item.text;
+    document.getElementById('modalBackdrop').classList.add('show');
+  }
+
+  function closeModal() {
+    document.getElementById('modalBackdrop').classList.remove('show');
+  }
+
+  function initAdminDropdown() {
+    const select = document.getElementById('selectDay');
+    select.innerHTML = '';
+    contents.forEach((item, index) => {
+      const opt = document.createElement('option');
+      opt.value = index;
+      opt.textContent = `Türchen ${index + 1}: ${item.title}`;
+      select.appendChild(opt);
+    });
+    loadEditorData();
+  }
+
+  function loadEditorData() {
+    const index = document.getElementById('selectDay').value;
+    const item = contents[index];
+    document.getElementById('inputTitle').value = item.title;
+    document.getElementById('inputCategory').value = item.category;
+    document.getElementById('inputText').value = item.text;
+  }
+
+  function saveData() {
+    const index = document.getElementById('selectDay').value;
+    contents[index].title = document.getElementById('inputTitle'].value;
+    contents[index].category = document.getElementById('inputCategory').value;
+    contents[index].text = document.getElementById('inputText').value;
+    
+    localStorage.setItem('schuelkeAppData', JSON.stringify(contents));
+    alert('Änderungen erfolgreich gespeichert!');
+    initAdminDropdown();
+  }
+
+  function exportJSON() {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(contents, null, 2));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download", "schuelke_methode_inhalte.json");
+    document.body.appendChild(dlAnchor);
+    dlAnchor.click();
+    dlAnchor.remove();
+  }
+
+  // Initialisierung beim Start
+  renderCalendar();
+</script>
+
+</body>
+</html>

@@ -48,13 +48,14 @@
             gap: 12px;
         }
 
-        .logo-img {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
+        /* Wir nutzen hier ein direktes, sauberes Design für das Logo-Element, das garantiert geladen wird */
+        .logo-box {
             background-color: #0b2545;
             padding: 8px 12px;
-            border-radius: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
@@ -218,8 +219,13 @@
 
     <header>
         <div class="logo-container">
-            <!-- Exakter Pfad zur hochgeladenen logo.png -->
-            <img src="assets/images/logo.png" alt="Logo" class="logo-img">
+            <!-- Eingebettetes Logo als saubere Vektorgrafik -->
+            <div class="logo-box">
+                <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 20v60c0 10 10 15 20 15s20-5 20-15V50c0-10-10-15-20-15s-20 5-20 15" stroke="white" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M50 35h20c10 0 15 5 15 15s-5 15-15 15H30" stroke="white" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
             
             <div style="display:flex; flex-direction:column;">
                 <span style="font-size:1.05rem; font-weight:500; letter-spacing:2.5px; color:#d81b60; text-transform:uppercase;">Schülke Methode</span>

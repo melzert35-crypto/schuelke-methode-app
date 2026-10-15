@@ -49,7 +49,7 @@
         }
 
         .logo-img {
-            height: 42px;
+            height: 55px;
             width: auto;
             object-fit: contain;
             display: block;
@@ -215,15 +215,8 @@
 
     <header>
         <div class="logo-container">
-            <!-- Das Logo wird hier direkt als SVG-Grafik eingebettet, umgeht jeden lokalen Handy-Sicherheitsfehler und sieht exakt aus wie auf der Homepage -->
-            <svg class="logo-img" viewBox="0 0 350 100" fill="white" xmlns="http://www.w3.org/2000/svg">
-                <!-- Stilisierter Monogramm-Teil (S) -->
-                <path d="M45 15C30 15 20 25 20 40C20 55 35 60 50 65C65 70 70 75 70 85C70 95 55 95 40 95C25 95 15 85 10 80" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-                <path d="M35 85C50 85 60 75 60 60C60 45 45 40 30 35C15 30 10 25 10 15C10 5 25 5 40 5C55 5 65 15 70 20" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-                <!-- Schriftzug SCHÜLKE METHODE im echten Design -->
-                <text x="95" y="45" font-family="Montserrat" font-weight="300" font-size="32" fill="white" letter-spacing="4">SCHÜLKE</text>
-                <text x="95" y="80" font-family="Montserrat" font-weight="300" font-size="22" fill="white" letter-spacing="3">METHODE</text>
-            </svg>
+            <!-- Lädt direkt die originale Bilddatei aus dem assets-Ordner -->
+            <img src="assets/images/logo.png" alt="Schülke Methode Logo" class="logo-img">
         </div>
 
         <button class="hamburger-btn" onclick="toggleMenu()">

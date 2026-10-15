@@ -48,13 +48,15 @@
             gap: 12px;
         }
 
+        /* Logo-Box jetzt in edlem Dunkelgrau/Blau oder mit klarem Kontrast, damit man das weiße Logo sieht */
         .logo-img {
             height: 48px;
             width: auto;
             object-fit: contain;
-            background-color: #1a1a1a;
-            padding: 6px 12px;
-            border-radius: 8px;
+            background-color: #0b2545; /* Ein sattes Dunkelblau, das perfekt zum Türkis passt */
+            padding: 8px 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         .hamburger-btn {
@@ -217,11 +219,13 @@
 
     <header>
         <div class="logo-container">
-            <!-- Hier wird wieder ganz normal auf den Pfad im Repository zugegriffen -->
+            <!-- Das Logo als Bild -->
             <img src="assets/images/Schuelke-Logo_weiss.png" alt="Logo" class="logo-img">
+            
+            <!-- Der Schriftzug daneben -->
             <div style="display:flex; flex-direction:column;">
-                <span style="font-size:1.1rem; font-weight:500; letter-spacing:3px; color:#d81b60; text-transform:uppercase;">Schülke Methode</span>
-                <span style="font-size:0.65rem; letter-spacing:2px; color:#888888; text-transform:uppercase; margin-top:2px;">Gesundheit · Bewusstsein</span>
+                <span style="font-size:1.05rem; font-weight:500; letter-spacing:2.5px; color:#d81b60; text-transform:uppercase;">Schülke Methode</span>
+                <span style="font-size:0.6rem; letter-spacing:1.5px; color:#666666; text-transform:uppercase; margin-top:2px;">Gesundheit · Bewusstsein</span>
             </div>
         </div>
 

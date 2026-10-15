@@ -48,15 +48,22 @@
             gap: 12px;
         }
 
-        /* Wir nutzen hier ein direktes, sauberes Design für das Logo-Element, das garantiert geladen wird */
+        /* Edler, dezenter Hintergrund, der das originale Logo optimal zur Geltung bringt */
         .logo-box {
             background-color: #0b2545;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .hamburger-btn {
@@ -191,103 +198,5 @@
             text-decoration: none;
             color: #333;
             font-size: 1rem;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
 
-        .admin-link {
-            color: #d81b60 !important;
-            font-weight: 500;
-            display: none;
-        }
-
-        .admin-login-btn {
-            margin-top: auto;
-            color: #aaa;
-            font-size: 0.85rem;
-            cursor: pointer;
-            border: none;
-            background: none;
-            text-align: left;
-            padding: 10px 0;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-container">
-            <!-- Eingebettetes Logo als saubere Vektorgrafik -->
-            <div class="logo-box">
-                <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30 20v60c0 10 10 15 20 15s20-5 20-15V50c0-10-10-15-20-15s-20 5-20 15" stroke="white" stroke-width="8" stroke-linecap="round"/>
-                    <path d="M50 35h20c10 0 15 5 15 15s-5 15-15 15H30" stroke="white" stroke-width="8" stroke-linecap="round"/>
-                </svg>
-            </div>
-            
-            <div style="display:flex; flex-direction:column;">
-                <span style="font-size:1.05rem; font-weight:500; letter-spacing:2.5px; color:#d81b60; text-transform:uppercase;">Schülke Methode</span>
-                <span style="font-size:0.6rem; letter-spacing:1.5px; color:#666666; text-transform:uppercase; margin-top:2px;">Gesundheit · Bewusstsein</span>
-            </div>
-        </div>
-
-        <button class="hamburger-btn" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-
-    <main>
-        <div class="card">
-            <h1 class="hero-title">
-                Gesundheit ist Farbe im Leben.<br>
-                Du bestimmst, wie bunt es wird!
-            </h1>
-
-            <div class="btn-container">
-                <a href="#adventskalender" class="btn-primary">
-                    ✦ Zum Adventskalender
-                </a>
-                <a href="#homepage" class="btn-secondary">
-                    Zur Homepage ↗
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <div class="menu-overlay" id="menuOverlay">
-        <button class="close-menu" onclick="toggleMenu()">✕</button>
-        <ul class="menu-items">
-            <li><a href="#homepage">Zur Homepage</a></li>
-            <li><a href="#adventskalender">Zum Adventskalender</a></li>
-            
-            <li id="adminMenuItem" style="display: none;">
-                <a href="#admin" class="admin-link">⚙ Admin-Bereich</a>
-            </li>
-        </ul>
-
-        <button class="admin-login-btn" id="loginBtn" onclick="promptAdminLogin()">🔒 Admin Login</button>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menuOverlay');
-            menu.classList.toggle('active');
-        }
-
-        function promptAdminLogin() {
-            const password = prompt("Bitte Admin-Passwort eingeben:");
-            if (password === "1234") {
-                document.getElementById('adminMenuItem').style.display = 'block';
-                document.getElementById('loginBtn').innerText = "🔓 Admin eingeloggt";
-                alert("Erfolgreich als Admin angemeldet!");
-            } else if (password !== null) {
-                alert("Falsches Passwort!");
-            }
-        }
-    </script>
-</body>
-</html>
+        

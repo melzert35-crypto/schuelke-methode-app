@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Schülke Methode – Gesundheitsapp & Adventskalender</title>
+<title>Schülke Methode – Adventskalender</title>
 <style>
   :root {
     --turquoise-bg: linear-gradient(135deg, #a2e8f0 0%, #baf5ee 50%, #d8faf7 100%);
@@ -25,11 +25,11 @@
     flex-direction: column;
   }
 
-  /* Header & Exaktes Logo nach Screenshot */
+  /* Header & Original Branding */
   header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
-    padding: 16px 32px;
+    padding: 16px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,92 +41,91 @@
 
   .brand-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 12px;
     text-decoration: none;
-    gap: 6px;
-    margin: 0 auto;
   }
 
-  /* Das geschwungene Monogramm-Logo als Grafik nachgebaut */
-  .logo-graphic {
-    width: 48px;
-    height: 48px;
-    border: 2px solid white;
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--magenta);
     border-radius: 50%;
     display: grid;
     place-items: center;
-    color: white;
+    color: var(--magenta);
     font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: 300;
-    background: rgba(255,255,255,0.15);
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .brand-text-wrap {
+    display: flex;
+    flex-direction: column;
   }
 
   .brand-title {
     font-family: Georgia, serif;
-    font-size: 24px;
-    letter-spacing: 0.22em;
-    color: white;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    color: var(--magenta);
     text-transform: uppercase;
-    font-weight: 300;
-    line-height: 1;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-weight: bold;
+    line-height: 1.1;
   }
 
   .brand-subtitle {
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: white;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
     text-transform: uppercase;
-    font-weight: 400;
   }
 
-  nav {
-    display: flex;
-    gap: 8px;
-    position: absolute;
-    right: 32px;
-  }
-
-  nav button {
-    background: none;
-    border: none;
-    font: inherit;
-    font-weight: 600;
-    color: var(--ink);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  nav button.active, nav button:hover {
+  /* Hamburger Menü Button */
+  .menu-btn {
     background: var(--magenta-light);
-    color: var(--magenta);
-  }
-
-  /* Der Admin-Button: Unsichtbar im Hintergrund versteckt, wird erst beim Hover (Drüberfahren) sichtbar */
-  .admin-secret-btn {
-    background: transparent !important;
-    color: transparent !important;
     border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    color: var(--magenta);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 22px;
     cursor: pointer;
-    position: absolute;
-    left: 20px;
-    top: 25px;
-    transition: background 0.3s, color 0.3s;
-    font-size: 12px;
     display: grid;
     place-items: center;
   }
-  .admin-secret-btn:hover {
-    background: var(--magenta-light) !important;
-    color: var(--magenta) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  /* Dropdown-Menü */
+  .dropdown-menu {
+    position: absolute;
+    top: 76px;
+    right: 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    min-width: 200px;
+    overflow: hidden;
+    z-index: 200;
+  }
+  .dropdown-menu.show { display: flex; }
+  .dropdown-menu button, .dropdown-menu a {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 14px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .dropdown-menu button:hover, .dropdown-menu a:hover {
+    background: var(--magenta-light);
+    color: var(--magenta);
   }
 
   /* Main Content */
@@ -141,22 +140,22 @@
   .page { display: none; }
   .page.active { display: block; }
 
-  /* Hero-Bereich im exakten Look deiner Screenshots */
+  /* Hero Section */
   .hero {
     text-align: center;
     padding: 60px 20px;
-    background: rgba(255, 255, 255, 0.75);
-    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
     border: 1px solid var(--line);
-    box-shadow: 0 15px 35px rgba(42, 90, 104, 0.08);
+    box-shadow: 0 10px 30px rgba(42, 90, 104, 0.05);
     margin-bottom: 30px;
   }
 
   .hero h1 {
     font-family: Georgia, serif;
     color: var(--magenta);
-    font-size: clamp(32px, 5.5vw, 48px);
-    line-height: 1.2;
+    font-size: clamp(28px, 4.5vw, 42px);
+    line-height: 1.25;
     text-transform: uppercase;
     letter-spacing: -0.01em;
     margin-bottom: 25px;
@@ -167,7 +166,7 @@
     background: var(--magenta);
     color: white;
     border: none;
-    padding: 14px 30px;
+    padding: 14px 28px;
     border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
@@ -318,23 +317,28 @@
 <body>
 
 <header>
-  <!-- Der unsichtbare Admin-Knopf ganz links in der Ecke (erscheint erst beim rüberfahren mit der Maus) -->
-  <button class="admin-secret-btn" onclick="switchPage('admin')" title="Admin-Bereich">⚙</button>
-
   <a href="https://schuelke-methode.de/" target="_blank" class="brand-container">
-    <div class="logo-graphic">S</div>
-    <span class="brand-title">SCHÜLKE</span>
-    <span class="brand-subtitle">M E T H O D E</span>
+    <div class="brand-logo">S</div>
+    <div class="brand-text-wrap">
+      <span class="brand-title">Schülke Methode</span>
+      <span class="brand-subtitle">Gesundheit · Bewusstsein</span>
+    </div>
   </a>
 
-  <nav>
-    <button onclick="switchPage('home')" id="nav-home" class="active">Start</button>
-    <button onclick="switchPage('calendar')" id="nav-calendar">Kalender</button>
-  </nav>
+  <!-- Hamburger Menü Button -->
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menü">☰</button>
+
+  <!-- Dropdown Menü -->
+  <div class="dropdown-menu" id="dropdownMenu">
+    <button onclick="switchPage('home')">Startseite</button>
+    <button onclick="switchPage('calendar')">Adventskalender</button>
+    <a href="https://schuelke-methode.de/" target="_blank">Zur Homepage ↗</a>
+    <button onclick="switchPage('admin')" style="color: var(--muted); font-size: 12px;">⚙ Inhalte pflegen</button>
+  </div>
 </header>
 
 <main>
-  <!-- Startseite mit exaktem Spruch aus den Screenshots -->
+  <!-- Startseite -->
   <section id="page-home" class="page active">
     <div class="hero">
       <h1>GESUNDHEIT IST FARBE IM LEBEN.<br>DU BESTIMMST, WIE BUNT ES WIRD!</h1>
@@ -352,9 +356,9 @@
     <div class="calendar-grid" id="calendarGrid"></div>
   </section>
 
-  <!-- Inhalte pflegen / Admin (Versteckt erreichbar über das Zahnrädchen links) -->
+  <!-- Admin / Inhalte pflegen -->
   <section id="page-admin" class="page">
-    <h2 class="section-title">Inhalte pflegen (Admin)</h2>
+    <h2 class="section-title">Inhalte pflegen</h2>
     <p style="color: var(--muted); margin-bottom: 20px;">Hier kannst du die Inhalte der 24 Türchen bearbeiten und abspeichern.</p>
     
     <div class="card">
@@ -408,15 +412,16 @@
     text: 'Hier entsteht der persönliche Inhalt für diesen Tag.'
   }));
 
+  function toggleMenu() {
+    document.getElementById('dropdownMenu').classList.toggle('show');
+  }
+
   function switchPage(pageId) {
+    document.getElementById('dropdownMenu').classList.remove('show');
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     
     const targetPage = document.getElementById('page-' + pageId);
-    const targetNav = document.getElementById('nav-' + pageId);
-    
     if(targetPage) targetPage.classList.add('active');
-    if(targetNav) targetNav.classList.add('active');
     
     if(pageId === 'calendar') renderCalendar();
     if(pageId === 'admin') initAdminDropdown();
@@ -478,7 +483,7 @@
     const index = select.value;
     contents[index].title = document.getElementById('inputTitle').value;
     contents[index].category = document.getElementById('inputCategory').value;
-    contents[index].text = document.getElementById('inputText'].value;
+    contents[index].text = document.getElementById('inputText').value;
     
     localStorage.setItem('schuelkeAppData', JSON.stringify(contents));
     alert('Änderungen erfolgreich gespeichert!');

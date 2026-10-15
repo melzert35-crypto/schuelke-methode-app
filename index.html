@@ -48,19 +48,9 @@
             gap: 12px;
         }
 
-        /* Edler, dezenter Hintergrund, der das originale Logo optimal zur Geltung bringt */
-        .logo-box {
-            background-color: #0b2545;
-            padding: 6px 10px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
+        /* Logo sitzt direkt auf dem Hintergrund (ohne Kasten) */
         .logo-img {
-            height: 38px;
+            height: 42px;
             width: auto;
             object-fit: contain;
             display: block;
@@ -198,5 +188,93 @@
             text-decoration: none;
             color: #333;
             font-size: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        
+        .admin-link {
+            color: #d81b60 !important;
+            font-weight: 500;
+            display: none;
+        }
+
+        .admin-login-btn {
+            margin-top: auto;
+            color: #aaa;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            text-align: left;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <!-- Logo direkt auf dem Hintergrund ohne Kasten -->
+            <img src="assets/images/logo.png" alt="Schülke Methode Logo" class="logo-img">
+        </div>
+
+        <button class="hamburger-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main>
+        <div class="card">
+            <h1 class="hero-title">
+                Gesundheit ist Farbe im Leben.<br>
+                Du bestimmst, wie bunt es wird!
+            </h1>
+
+            <div class="btn-container">
+                <a href="#adventskalender" class="btn-primary">
+                    ✦ Zum Adventskalender
+                </a>
+                <a href="#homepage" class="btn-secondary">
+                    Zur Homepage ↗
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="close-menu" onclick="toggleMenu()">✕</button>
+        <ul class="menu-items">
+            <li><a href="#homepage">Zur Homepage</a></li>
+            <li><a href="#adventskalender">Zum Adventskalender</a></li>
+            
+            <li id="adminMenuItem" style="display: none;">
+                <a href="#admin" class="admin-link">⚙ Admin-Bereich</a>
+            </li>
+        </ul>
+
+        <button class="admin-login-btn" id="loginBtn" onclick="promptAdminLogin()">🔒 Admin Login</button>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuOverlay');
+            menu.classList.toggle('active');
+        }
+
+        function promptAdminLogin() {
+            const password = prompt("Bitte Admin-Passwort eingeben:");
+            if (password === "1234") {
+                document.getElementById('adminMenuItem').style.display = 'block';
+                document.getElementById('loginBtn').innerText = "🔓 Admin eingeloggt";
+                alert("Erfolgreich als Admin angemeldet!");
+            } else if (password !== null) {
+                alert("Falsches Passwort!");
+            }
+        }
+    </script>
+</body>
+</html>

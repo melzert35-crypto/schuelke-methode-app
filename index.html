@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schülke Methode</title>
     <style>
-        /* 1. Montserrat-Schriftarten (TTF) einbinden */
         @font-face {
             font-family: 'Montserrat';
             src: url('assets/fonts/Montserrat-Light.ttf') format('truetype');
@@ -20,7 +19,6 @@
             font-style: normal;
         }
 
-        /* 2. Allgemeine Stile & Hintergrund */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -37,13 +35,11 @@
             color: #333333;
         }
 
-        /* 3. Header & Logo (mit dunklem Hintergrund, damit das weiße Logo perfekt zur Geltung kommt) */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
-            background-color: transparent;
         }
 
         .logo-container {
@@ -61,7 +57,6 @@
             border-radius: 8px;
         }
 
-        /* Hamburger Button */
         .hamburger-btn {
             background: #fce4ec;
             border: none;
@@ -84,7 +79,6 @@
             border-radius: 2px;
         }
 
-        /* 4. Hauptinhalt & Card */
         main {
             flex: 1;
             display: flex;
@@ -114,7 +108,6 @@
             margin-bottom: 30px;
         }
 
-        /* Buttons */
         .btn-container {
             display: flex;
             flex-direction: column;
@@ -156,7 +149,6 @@
             cursor: pointer;
         }
 
-        /* 5. Hamburger Menü Overlay */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -223,12 +215,10 @@
 </head>
 <body>
 
-    <!-- Header mit direkt eingebettetem Logo und Hamburger-Menü -->
     <header>
         <div class="logo-container">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAMAAAD04Y9BAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8+IDxyZGY6UkR
-            F xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/"> <xmp:CreatorTool>Adobe Illustrator 27.0 (Windows)</xmp:CreatorTool> <xmp:CreateDate>2023-01-01T00:00:00Z</xmp:CreateDate> <xmp:ModifyDate>2023-01-01T00:00:00Z</xmp:ModifyDate> </rdf:Description> </rdf:RDF> </xmp:meta>
-            " alt="Logo" class="logo-img" onerror="this.style.display='none'">
+            <!-- Hier wird wieder ganz normal auf den Pfad im Repository zugegriffen -->
+            <img src="assets/images/Schuelke-Logo_weiss.png" alt="Logo" class="logo-img">
             <div style="display:flex; flex-direction:column;">
                 <span style="font-size:1.1rem; font-weight:500; letter-spacing:3px; color:#d81b60; text-transform:uppercase;">Schülke Methode</span>
                 <span style="font-size:0.65rem; letter-spacing:2px; color:#888888; text-transform:uppercase; margin-top:2px;">Gesundheit · Bewusstsein</span>
@@ -242,7 +232,6 @@
         </button>
     </header>
 
-    <!-- Hauptbereich / Card -->
     <main>
         <div class="card">
             <h1 class="hero-title">
@@ -261,7 +250,6 @@
         </div>
     </main>
 
-    <!-- Hamburger Menü (Sidebar) mit Admin-Bereich -->
     <div class="menu-overlay" id="menuOverlay">
         <button class="close-menu" onclick="toggleMenu()">✕</button>
         <ul class="menu-items">
@@ -276,7 +264,6 @@
         <button class="admin-login-btn" id="loginBtn" onclick="promptAdminLogin()">🔒 Admin Login</button>
     </div>
 
-    <!-- JavaScript -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menuOverlay');

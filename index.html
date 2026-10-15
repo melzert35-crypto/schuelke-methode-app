@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schülke Methode</title>
     <style>
-        /* 1. Schriftarten (TTF) einbinden */
+        /* 1. Montserrat-Schriftarten (TTF) einbinden */
         @font-face {
             font-family: 'Montserrat';
             src: url('assets/fonts/Montserrat-Light.ttf') format('truetype');
@@ -37,7 +37,7 @@
             color: #333333;
         }
 
-        /* 3. Header & Logo */
+        /* 3. Header & Logo (mit dunklem Hintergrund, damit das weiße Logo perfekt zur Geltung kommt) */
         header {
             display: flex;
             justify-content: space-between;
@@ -53,33 +53,12 @@
         }
 
         .logo-img {
-            height: 45px;
+            height: 48px;
             width: auto;
             object-fit: contain;
-            background-color: #1a1a1a; /* Macht den Hintergrund dunkel, damit das weiße Logo sichtbar wird */
-    padding: 5px 10px;
-    border-radius: 6px;
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 3px;
-            color: #d81b60; /* Hauptfarbe */
-            text-transform: uppercase;
-        }
-
-        .brand-subtitle {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            color: #888888;
-            text-transform: uppercase;
-            margin-top: 2px;
+            background-color: #1a1a1a;
+            padding: 6px 12px;
+            border-radius: 8px;
         }
 
         /* Hamburger Button */
@@ -156,7 +135,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: transform 0.2s, background-color 0.2s;
             border: none;
             cursor: pointer;
         }
@@ -174,13 +152,8 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            transition: transform 0.2s;
             border: none;
             cursor: pointer;
-        }
-
-        .btn-primary:active, .btn-secondary:active {
-            transform: scale(0.98);
         }
 
         /* 5. Hamburger Menü Overlay */
@@ -233,7 +206,7 @@
         .admin-link {
             color: #d81b60 !important;
             font-weight: 500;
-            display: none; /* Standardmäßig versteckt */
+            display: none;
         }
 
         .admin-login-btn {
@@ -250,13 +223,15 @@
 </head>
 <body>
 
-    <!-- Header mit Logo und Hamburger-Menü -->
+    <!-- Header mit direkt eingebettetem Logo und Hamburger-Menü -->
     <header>
         <div class="logo-container">
-            <img src="assets/images/Schuelke-Logo_weiss.png" alt="Logo" class="logo-img">
-            <div class="brand-text">
-                <span class="brand-title">Schülke Methode</span>
-                <span class="brand-subtitle">Gesundheit · Bewusstsein</span>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAMAAAD04Y9BAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8+IDxyZGY6UkR
+            F xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/"> <xmp:CreatorTool>Adobe Illustrator 27.0 (Windows)</xmp:CreatorTool> <xmp:CreateDate>2023-01-01T00:00:00Z</xmp:CreateDate> <xmp:ModifyDate>2023-01-01T00:00:00Z</xmp:ModifyDate> </rdf:Description> </rdf:RDF> </xmp:meta>
+            " alt="Logo" class="logo-img" onerror="this.style.display='none'">
+            <div style="display:flex; flex-direction:column;">
+                <span style="font-size:1.1rem; font-weight:500; letter-spacing:3px; color:#d81b60; text-transform:uppercase;">Schülke Methode</span>
+                <span style="font-size:0.65rem; letter-spacing:2px; color:#888888; text-transform:uppercase; margin-top:2px;">Gesundheit · Bewusstsein</span>
             </div>
         </div>
 
@@ -286,10 +261,38 @@
         </div>
     </main>
 
-    <!-- Hamburger Menü (Sidebar) -->
+    <!-- Hamburger Menü (Sidebar) mit Admin-Bereich -->
     <div class="menu-overlay" id="menuOverlay">
         <button class="close-menu" onclick="toggleMenu()">✕</button>
         <ul class="menu-items">
             <li><a href="#homepage">Zur Homepage</a></li>
-            <li><a href="#adv
-                  
+            <li><a href="#adventskalender">Zum Adventskalender</a></li>
+            
+            <li id="adminMenuItem" style="display: none;">
+                <a href="#admin" class="admin-link">⚙ Admin-Bereich</a>
+            </li>
+        </ul>
+
+        <button class="admin-login-btn" id="loginBtn" onclick="promptAdminLogin()">🔒 Admin Login</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuOverlay');
+            menu.classList.toggle('active');
+        }
+
+        function promptAdminLogin() {
+            const password = prompt("Bitte Admin-Passwort eingeben:");
+            if (password === "1234") {
+                document.getElementById('adminMenuItem').style.display = 'block';
+                document.getElementById('loginBtn').innerText = "🔓 Admin eingeloggt";
+                alert("Erfolgreich als Admin angemeldet!");
+            } else if (password !== null) {
+                alert("Falsches Passwort!");
+            }
+        }
+    </script>
+</body>
+</html>

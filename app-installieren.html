@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>App installieren – Schülke Methode</title>
+    <meta name="description" content="So kommt die Schülke-Methode-App auf dein Handy – in drei Schritten, ohne App Store.">
+    <meta name="theme-color" content="#a8f0ed">
+    <meta name="color-scheme" content="only light">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <style>
+        :root { color-scheme: only light; }
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: #d8fbf8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body::before { content: ""; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; background: linear-gradient(180deg, #a8f0ed 0%, #d8fbf8 50%, #ffffff 100%); }
+        body { font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 400; color: #333; line-height: 1.55;
+               padding: calc(20px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(32px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left)); }
+        .wrap { max-width: 460px; margin: 0 auto; }
+        .logo { display: block; height: 84px; width: auto; margin: 0 auto 14px; }
+        h1 { font-size: 1.25rem; font-weight: 500; color: #d81b60; text-align: center; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+        .lead { text-align: center; font-size: 0.95rem; color: #555; margin-bottom: 22px; }
+        .card { background: rgba(255,255,255,0.92); border-radius: 22px; padding: 22px 20px; margin-bottom: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+        .card h2 { font-size: 1.05rem; font-weight: 600; color: #d81b60; margin-bottom: 10px; }
+        .card.aktiv { box-shadow: 0 0 0 2px #d81b60, 0 8px 24px rgba(216,27,96,0.12); }
+        ol { margin-left: 22px; }
+        li { margin-bottom: 8px; font-size: 0.95rem; }
+        li::marker { color: #d81b60; font-weight: 600; }
+        .hinweis { background: #fff8e1; border-radius: 14px; padding: 12px 14px; font-size: 0.88rem; margin-bottom: 14px; }
+        .btn { display: block; text-align: center; text-decoration: none; background: #d81b60; color: #fff; font-weight: 600; font-size: 1rem;
+               padding: 15px 24px; border-radius: 30px; box-shadow: 0 4px 15px rgba(216,27,96,0.3); margin: 20px 0 6px; }
+        .klein { font-size: 0.8rem; color: #777; text-align: center; margin-top: 14px; }
+        kbd { font-family: inherit; background: #fce4ec; color: #b0124d; border-radius: 6px; padding: 1px 7px; font-weight: 600; font-size: 0.9em; white-space: nowrap; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <img class="logo" src="assets/logo.png" alt="Schülke Methode">
+    <h1>App aufs Handy holen</h1>
+    <p class="lead">Ohne App Store, kostenlos, in einer halben Minute. Danach liegt die App mit eigenem Symbol auf deinem Startbildschirm.</p>
+
+    <div class="hinweis" id="inapp" style="display:none">
+        <b>Wichtig:</b> Du hast diesen Link gerade in einer anderen App geöffnet (z. B. WhatsApp, Instagram oder Mail). Öffne ihn bitte im Browser: oben rechts auf <kbd>⋯</kbd> oder das Teilen-Symbol tippen und <kbd>Im Browser öffnen</kbd> wählen (auf dem iPhone: <kbd>In Safari öffnen</kbd>).
+    </div>
+
+    <div class="card" id="c-ios">
+        <h2>iPhone &amp; iPad</h2>
+        <ol>
+            <li>Diese Seite in <b>Safari</b> öffnen.</li>
+            <li>Unten auf das <b>Teilen-Symbol</b> tippen (Quadrat mit Pfeil nach oben).</li>
+            <li>Nach unten wischen und <kbd>Zum Home-Bildschirm</kbd> wählen, dann <kbd>Hinzufügen</kbd>.</li>
+        </ol>
+    </div>
+
+    <div class="card" id="c-android">
+        <h2>Android (Samsung, Pixel &amp; Co.)</h2>
+        <ol>
+            <li>Diese Seite in <b>Chrome</b> oder im <b>Samsung-Browser</b> öffnen.</li>
+            <li>Chrome: oben rechts <kbd>⋮</kbd> tippen, dann <kbd>App installieren</kbd> oder <kbd>Zum Startbildschirm hinzufügen</kbd>.<br>
+                Samsung-Browser: unten <kbd>≡</kbd> tippen, dann <kbd>Seite hinzufügen zu</kbd> und <kbd>Startbildschirm</kbd>.</li>
+            <li>Mit <kbd>Installieren</kbd> bzw. <kbd>Hinzufügen</kbd> bestätigen.</li>
+        </ol>
+    </div>
+
+    <a class="btn" href="./">Zur App</a>
+    <p class="klein">Du kannst die App auch einfach im Browser nutzen, ohne sie zu installieren.<br>Entfernen geht wie bei jeder App: Symbol lange gedrückt halten.</p>
+</div>
+<script>
+    (function () {
+        var ua = navigator.userAgent || '';
+        var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+        var android = /Android/.test(ua);
+        var inapp = /FBAN|FBAV|Instagram|Line\/|MicroMessenger|WhatsApp|Snapchat|GSA\/|; wv\)/.test(ua);
+        var top = document.getElementById(ios ? 'c-ios' : android ? 'c-android' : null);
+        if (top) { top.classList.add('aktiv'); top.parentNode.insertBefore(top, top.parentNode.querySelector('.card')); }
+        if (inapp) document.getElementById('inapp').style.display = 'block';
+    })();
+</script>
+</body>
+</html>

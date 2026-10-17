@@ -1,20 +1,15 @@
-# Schülke Methode – App-Prototyp
+# Schülke Methode – App
 
-Eine mobile-freundliche, statische Web-App als Startgerüst für die Schülke Methode.
+Webseite, die sich auf Handy (Android und iPhone) wie eine App installieren lässt.
 
-## GitHub Pages aktivieren
+- `index.html` – die App selbst (nicht verändern)
+- `inhalte.js` – alle Texte (Adventskalender, Neuigkeiten, Passwort) – nur diese Datei ändern
+- `manifest.webmanifest`, `icons/` – App-Name und Symbol auf dem Handy
+- `sw.js` – ermöglicht Installieren und Offline-Nutzung (nicht verändern)
+- `app-installieren.html` – Seite mit der Installationsanleitung für iPhone und Android; diesen Link an Kundinnen und Kunden schicken oder auf der Homepage verlinken
+- `homepage-baustein.html` – fertiger Link-Button zum Einfügen in die Homepage (Anleitung steht in der Datei)
+- `assets/` – Original-Logo
 
-1. Lade `index.html`, `README.md` und `.nojekyll` in das Stammverzeichnis eines GitHub-Repositories hoch.
-2. Öffne im Repository **Settings → Pages**.
-3. Wähle unter **Build and deployment** die Quelle **Deploy from a branch**.
-4. Wähle den Branch `main` und den Ordner `/(root)`, dann **Save**.
-5. Warte auf die Veröffentlichung. GitHub zeigt die Webadresse anschließend im Bereich **Pages** an.
+Schritt-für-Schritt-Anleitung: siehe Dokument „Anleitung: Schülke Methode App einrichten und befüllen“.
 
-## Wichtige Hinweise
-
-- Dies ist ein Prototyp, keine fertige Gesundheitsplattform.
-- Änderungen aus der Inhaltsverwaltung werden lokal im Browser gespeichert. Sie werden nicht automatisch zwischen Geräten synchronisiert.
-- JSON-Export und -Import dienen zum Sichern und Übertragen von Beispielinhalten.
-- GitHub Pages stellt statische Dateien öffentlich bereit. Keine vertraulichen, persönlichen oder medizinischen Daten in den Quellcode oder öffentliche Dateien eintragen.
-- Für einen gemeinsamen Verwaltungsbereich mit Anmeldung und zentraler Speicherung wird später ein Backend mit Authentifizierung benötigt.
-- Die Beispieltexte sind Platzhalter und müssen von der Betreiberin geprüft und durch ihre eigenen Inhalte ersetzt werden.
+**Hinweis:** Dieses Repository ist öffentlich. Keine Kundendaten, keine persönlichen oder gesundheitlichen Angaben zu Einzelpersonen eintragen.

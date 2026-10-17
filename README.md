@@ -12,4 +12,5 @@ Webseite, die sich auf Handy (Android und iPhone) wie eine App installieren läs
 
 Schritt-für-Schritt-Anleitung: siehe Dokument „Anleitung: Schülke Methode App einrichten und befüllen“.
 
-**Hinweis:** Dieses Repository ist öffentlich. Keine Kundendaten, keine persönlichen oder gesundheitlichen Angaben zu Einzelpersonen eintragen.
+**Hinweis:** Dieses Repository ist öffentlich. 
+Keine Kundendaten, keine persönlichen oder gesundheitlichen Angaben zu Einzelpersonen eintragen.
